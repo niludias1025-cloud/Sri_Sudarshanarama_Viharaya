@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="si">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ශ්‍රී සුදර්ශනාරාම විහාරය - පනාපිටිය</title>
+
+  <!-- Sinhala font -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --gold:#d4a64a;
+      --maroon:#7a4126;
+      --muted:#6b6b6b;
+      --card:#ffffffdf;
+      --glass: rgba(255,255,255,0.8);
+    }
+    /* Page background (Buddhist-culture image chosen) */
+    body{
+      margin:0;
+      font-family:'Noto Sans Sinhala', system-ui, sans-serif;
+      background:
+        linear-gradient(180deg, rgba(10,8,6,0.15), rgba(255,255,255,0.08)),
+        url('background.jpg') center/cover no-repeat fixed;
+      color:#222;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* Sticky navigation */
+    .nav {
+      position:sticky;
+      top:0;
+      z-index:60;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:12px 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.90), rgba(255,255,255,0.75));
+      border-bottom:1px solid rgba(0,0,0,0.06);
+      backdrop-filter: blur(6px);
+    }
+    .brand {display:flex;align-items:center;gap:14px;}
+    .logo {
+      width:56px;height:56px;border-radius:50%;
+      background:linear-gradient(135deg,var(--gold),#ffd77a);
+      display:flex;align-items:center;justify-content:center;font-size:28px;
+      box-shadow:0 4px 14px rgba(0,0,0,0.12);
+    }
+    .brand h1{font-size:18px;margin:0;color:var(--maroon);letter-spacing:0.6px}
+
+    .nav-links{display:flex;gap:12px}
+    .nav-links a{color:var(--muted);text-decoration:none;font-weight:600;padding:8px 12px;border-radius:8px}
+    .nav-links a:hover{background:rgba(0,0,0,0.03);color:var(--maroon)}
+
+    /* Hero */
+    .hero{
+      max-width:1200px;margin:26px auto 0;padding:28px;border-radius:16px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.90));
+      box-shadow:0 12px 35px rgba(10,10,10,0.12);
+      display:grid;grid-template-columns: 1fr 360px;gap:24px;align-items:center;
+    }
+    .hero .intro h2{margin:0;font-size:28px;color:var(--maroon)}
+    .hero .intro p.lead{margin:8px 0 16px;color:#444}
+    .hero .meta {font-size:14px;color:var(--muted)}
+
+    .hero .callout {
+      background:linear-gradient(135deg,#fff8ea,#fff5e0);
+      border:1px solid rgba(210,170,74,0.12);
+      padding:16px;border-radius:12px;text-align:center;
+      box-shadow:0 6px 18px rgba(0,0,0,0.06);
+    }
+    .hero .callout strong{display:block;font-size:14px;color:var(--maroon);margin-bottom:8px}
+    .hero .callout small{font-size:13px;color:var(--muted)}
+
+    /* Layout */
+    .wrap{max-width:1200px;margin:26px auto;padding:0 20px}
+    .grid{display:grid;grid-template-columns:2fr 1fr;gap:22px;align-items:start}
+    .card{background:var(--card);padding:20px;border-radius:12px;box-shadow:0 8px 22px rgba(0,0,0,0.08)}
+    h3{color:var(--maroon);margin:6px 0 12px}
+
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .gallery img{width:100%;height:160px;object-fit:cover;border-radius:10px;cursor:pointer;transition:transform .28s,box-shadow .28s}
+    .gallery img:hover{transform:scale(1.06);box-shadow:0 12px 28px rgba(0,0,0,0.24)}
+
+    /* Timeline / list */
+    .timeline{display:flex;flex-direction:column;gap:10px}
+    .timeline .event{padding:12px;border-radius:10px;border-left:4px solid var(--gold);background:rgba(255,255,255,0.6)}
+
+    /* Map placeholder */
+    .map{height:220px;border-radius:10px;background:linear-gradient(180deg,#eaf5ff,#f7fbff);display:flex;align-items:center;justify-content:center;color:#325c7a;font-weight:700}
+
+    footer{max-width:1200px;margin:26px auto;padding:18px;border-radius:10px;text-align:center;color:var(--muted);background:rgba(255,255,255,0.84)}
+
+    /* Lightbox */
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.75);display:none;align-items:center;justify-content:center;z-index:90}
+    .lightbox img{max-width:92%;max-height:92%;border-radius:8px}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:520px){
+      .gallery img{height:120px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="brand">
+      <div class="logo" aria-hidden>☸</div>
+      <div>
+        <h1>ශ්‍රී සුදර්ශනාරාම විහාරය</h1>
+        <div style="font-size:12px;color:var(--muted)">පනාපිටිය — ඉතිහාසය, සංවර්ධනය හා සේවා</div>
+      </div>
+    </div>
+
+    <div class="nav-links" aria-hidden>
+      <a href="#history">ඉතිහාසය</a>
+      <a href="#monks">භික්ෂූන්</a>
+      <a href="#daham">දහම්පාසල</a>
+      <a href="#gallery">ගැලරිය</a>
+      <a href="#contact">දායක සභාව සහ ප්‍රජා සේවාව</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" aria-label="Hero">
+    <div class="intro">
+      <h2>ශ්‍රී සුදර්ශනාරාම විහාරය — පනාපිටිය</h2>
+      <p class="lead">ඉතිහාසය, සංවර්ධනය හා සේවා — මෙම විහාරයේ ආරම්භය: ක්‍රි.ව. 1970 / බු.ව. 2045</p>
+      <div class="meta">සකස් කළේ: පූජ්‍ය වතුරුවිල විජිත — Bs/24/25/881 — 2025.11.02</div>
+    </div>
+
+    <aside class="callout" aria-label="Quick facts">
+      <strong>විහාරස්ථානයේ පිහිටීම</strong>
+      <small>කලුතර නගරයේ සිට ≈ 7km — කලුතර-කොළඹ මාර්ගය, නාගස්හන්දියෙන් හැරී පනාපිටිය ගමේ ආරම්භයේ පිහිටා ඇත.</small>
+      <div style="height:12px"></div>
+      <strong>ප්‍රධාන සේවා</strong>
+      <small>දහම්පාසල, දායක සභා වැඩපිළිවෙළ, ජනාමාත්‍ය සේවාවන්</small>
+    </aside>
+  </section>
+
+  <!-- Main content -->
+  <main class="wrap" role="main">
+    <div class="grid">
+
+      <!-- Left column: content -->
+      <div>
+        <section id="history" class="card">
+          <h3>📜 ඉතිහාසය</h3>
+
+          <div class="timeline">
+            <div class="event">
+              <strong>ආරම්භක විහාරාධිපති:</strong>
+              <div>පූජ්‍ය භවගොඩ සෝභිත හිමි — පැරණි විහාරස්ථාන මන්දිරය හා සංඝ වාසයක් සමඟ විහාරය ආරම්භ කෙරිණි.</div>
+            </div>
+
+            <div class="event">
+              <strong>පූජ්‍ය දියගම ගුණානන්ද හිමි:</strong>
+              <div>පූජ්‍ය භවගොඩ සෝභිත හිමියන්ගෙන් පසුව විහාරාධිපති ධූරය ගත් අතර, පාලි හා අභිධර්ම කුසලතා වලට නම කෙරිණි.</div>
+            </div>
+
+            <div class="event">
+              <strong>පූජ්‍ය කලපුගම මේධානන්ද හිමි:</strong>
+              <div>විහාරයේ ඉදිරිපස කටුමැටි ගැසු පොල් අතු සහිත ශාලාවක් ගොඩනැගීය — ධර්ම ශාලාවක් ලෙස භාවිතා විය.</div>
+            </div>
+
+            <div class="event">
+              <strong>පූජ්‍ය පනාපිටියේ ධම්මානන්ද හිමි:</strong>
+              <div>විහාරය ප්‍රදේශයේ ජනප්‍රිය ආගමික මධ්‍යස්ථානයක් බවට පත් කළේය; 1953 දී දහම් පාසල ආරම්භ කෙරිණි (1962දී අභාවප්‍රාප්ත).</div>
+            </div>
+
+            <div class="event">
+              <strong>පූජ්‍ය කලපුගම සංඝරතන හිමි:</strong>
+              <div>විහාර භූමිය සංවර්ධනය කළේය — වෛද්‍ය සේවා සහ පොල්-රබර් වගා ආරම්භ කෙරුනි.</div>
+            </div>
+
+            <div class="event">
+              <strong>පූජ්‍ය බද්දේගම දෙනවානන්ද හිමි:</strong>
+              <div>විශාල සංවර්ධන කාලය — චෛත්‍ය, නව සංඝාවාස හා පිරිසිදු පහසුකම් ගොඩනැගීම.</div>
+            </div>
+
+            <div class="event">
+              <strong>වර්තමාන විහාරාධිපති:</strong>
+              <div>පූජ්‍ය කහදූවේ අමිත හිමි — ධර්මාචාර්ය, පණ්ඩිත, ආචාර්යභාරය; දහම්පාසල නවීකරණ හා ගොඩනැගිලි වැඩ.</div>
+            </div>
+          </div>
+        </section>
+
+        <section id="monks" class="card" style="margin-top:18px">
+          <h3>👥 භික්ෂූන් & සාමනේර</h3>
+
+          <p><strong>උපසම්පදා භික්ෂූන්:</strong></p>
+          <ul>
+            <li>පූජ්‍ය කහදුවේ අමිත හිමි — විහාරාධිපති</li>
+            <li>පූජ්‍ය වතුරුවිල මධුර හිමි</li>
+            <li>පූජ්‍ය වතුරුවිල විජිත හිමි</li>
+          </ul>
+
+          <p style="margin-top:10px"><strong>සාමනේර හිමිවරුන්:</strong></p>
+          <ul>
+            <li>සාමනේර ගැටදිවුලේ ශාන්තිදේව හිමි</li>
+            <li>සාමනේර ගැටදිවුලේ අරියදේව හිමි</li>
+            <li>සාමනේර බුලත්සිංහල ධම්මදේව හිමි</li>
+            <li>සාමනේර කහදූවේ නන්දදේව හිමි</li>
+            <li>සාමනේර අම්පාරේ බුද්ධදේව හිමි</li>
+          </ul>
+        </section>
+
+        <section id="daham" class="card" style="margin-top:18px">
+          <h3>📚 දහම්පාසල</h3>
+          <p>ශ්‍රී සුදර්ශනාරාම දහම්පාසලේ අරමුණ වන්නේ බුද්ධ ධර්මය හා සදාචාරාත්මක ගුණයන් දරුවන්ටම ලබා දීමයි. දැනට සිසුන් ≈ 200ක්, ගුරු වාර්ගය සමස්තයෙන් 9 දෙනෙකි.</p>
+        </section>
+
+        <section class="card" style="margin-top:18px">
+          <h3>🤝 දායක සභාව & ප්‍රජා සේවාව</h3>
+          <ul>
+            <li>රක්ත දානයේ ව්‍යාපෘති</li>
+            <li>අභයදාන සහ සත්ත්ව සංරක්ෂණ වැඩසටහන්</li>
+            <li>ආපදා සහන හා ආහාර දානය</li>
+            <li>පාසල් උපකරණ බෙදාදීම</li>
+            <li>වයසක පුද්ගලයින්ට පින්කම් හා උපකාර</li>
+            <li>පරිසර රැකවරණ හා වගාව වැඩසටහන්</li>
+          </ul>
+        </section>
+      </div>
+
+      <!-- Right column: sidebar -->
+      <aside>
+        <div class="card">
+          <h3>ඉක්මන් තොරතුරු</h3>
+          <p><strong>විහාර ආරම්භය:</strong> ක්‍රි.ව. 1907 / බු.ව. 2045</p>
+          <p><strong>විකල්ප නාමය:</strong> ශ්‍රී සුදර්ශනාරාම විහාරය - පනාපිටිය</p>
+          <div style="height:8px"></div>
+          <h4 style="margin:6px 0;color:var(--maroon)">සිදු කළ සේව</h4>
+          <ul style="font-size:14px;color:#444">
+            <li>ධර්ම ශාලා පිහිටුවීම</li>
+            <li>දහම් පාසල ආරම්භය (1953)</li>
+            <li>සාමාජික සහ වෛද්‍ය සහාය</li>
+          </ul>
+        </div>
+
+        <div class="card" style="margin-top:16px">
+          <h3>Gallery</h3>
+          <div id="gallery" class="gallery" aria-live="polite">
+            <img src="https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJa_xGpM3NQBLWjzPAfZpx-MhEotoAfr7VvFuLvZ8eBh5v79Uc3M6nAa_Yl90GQo8oDFMx6Y-Tai0SxjHGyDOFed9FA0souGyEgbPVbDW1WrY-Lb8gCQRiN0exbnqJFk8EZOjm=w186-h310-n-k-no-nu" alt="image 1" data-full="https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyJa_xGpM3NQBLWjzPAfZpx-MhEotoAfr7VvFuLvZ8eBh5v79Uc3M6nAa_Yl90GQo8oDFMx6Y-Tai0SxjHGyDOFed9FA0souGyEgbPVbDW1WrY-Lb8gCQRiN0exbnqJFk8EZOjm=w186-h310-n-k-no-nu" />
+            <img src="https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwoF_WNbBsLZhxyNVlhnM7cwoNVGtctkSXxUWuUzsG5n4b1b-KfG-e8wmnSQoLi3O14k3dafWCYGQIzI8fOM9ycWoqH7Y8lbqALpyUGv_i11ofwj8KnzvTldppW_RjVb9pDpMuGAQ=w186-h133-n-k-no-nu" alt="image 2" data-full="https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwoF_WNbBsLZhxyNVlhnM7cwoNVGtctkSXxUWuUzsG5n4b1b-KfG-e8wmnSQoLi3O14k3dafWCYGQIzI8fOM9ycWoqH7Y8lbqALpyUGv_i11ofwj8KnzvTldppW_RjVb9pDpMuGAQ=w186-h133-n-k-no-nu" />
+            <img src="https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzvgKvD4lebss80ihay1yiflrz_L_TuLy20PyzCiU9lRQtRc0LC7nOXfYDGMwFFc8fvewc-HTmg39JM5RaSeTGdM24p8C8rGDmy2mdk3kZoCSn7wouPthFi1Z-aImOPz_MDBSS77A=w186-h133-n-k-no-nu" alt="image 3" data-full="https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzvgKvD4lebss80ihay1yiflrz_L_TuLy20PyzCiU9lRQtRc0LC7nOXfYDGMwFFc8fvewc-HTmg39JM5RaSeTGdM24p8C8rGDmy2mdk3kZoCSn7wouPthFi1Z-aImOPz_MDBSS77A=w186-h133-n-k-no-nu" />
+ <img src="https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxsy48rgOy4lCspdWbZyANnUhr4P7IwLwn0dLc0oCxfEz7gv7RdKSZfFbOdiHaaXKaQ0WBymxB4hTfLHRLJMOhuaC2kg93rvpZxcHHpESCEOumvS_8CSpL84_pjHRkCKvkZyFeg=w186-h133-n-k-no-nu" alt="image 3" data-full="https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxsy48rgOy4lCspdWbZyANnUhr4P7IwLwn0dLc0oCxfEz7gv7RdKSZfFbOdiHaaXKaQ0WBymxB4hTfLHRLJMOhuaC2kg93rvpZxcHHpESCEOumvS_8CSpL84_pjHRkCKvkZyFeg=w186-h133-n-k-no-nu" />
+ <img src="https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwUdkXCdP6v_PQl2d_-Y94HAjdP2bIkLj3ZW9svRy1tYMq2fle2E0QwFSd2guDfORrZnhy7Dus_ZSNbh3H52nAD2az_C_9mBcbYWP5iCKu9O8Ln5tkKonPjwRCElm1YMYuPctYd=w186-h133-n-k-no-nu" alt="image 4" data-full="https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwUdkXCdP6v_PQl2d_-Y94HAjdP2bIkLj3ZW9svRy1tYMq2fle2E0QwFSd2guDfORrZnhy7Dus_ZSNbh3H52nAD2az_C_9mBcbYWP5iCKu9O8Ln5tkKonPjwRCElm1YMYuPctYd=w186-h133-n-k-no-nu" />
+<img src="https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzp_nTbYUPIpGRIGgwgnTMI_H5GO4M2TYlWhyomFf1i-pWYFO-gqPRg40EkASVtd6GviDwRKohj-tWlfS3CNUV2dkUwHLQ0k_LjwfNfmhk9UPrfcv5PkMLoH4VnFM6fzQMHFAboEg=w186-h133-n-k-no-nu" alt="image 5" data-full="https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzp_nTbYUPIpGRIGgwgnTMI_H5GO4M2TYlWhyomFf1i-pWYFO-gqPRg40EkASVtd6GviDwRKohj-tWlfS3CNUV2dkUwHLQ0k_LjwfNfmhk9UPrfcv5PkMLoH4VnFM6fzQMHFAboEg=w186-h133-n-k-no-nu" />
+ <img src="C:\Users\singe\OneDrive\Desktop\Hashini new\Image 1.jpeg" alt="image 6" data-full="C:\Users\singe\OneDrive\Desktop\Hashini new\Image 1.jpeg" />
+ <img src="C:\Users\singe\OneDrive\Desktop\Hashini new\image 2.jpeg" alt="image 7" data-full="C:\Users\singe\OneDrive\Desktop\Hashini new\image 2.jpeg" />
+ <img src="C:\Users\singe\OneDrive\Desktop\Hashini new\image 4.jpeg" alt="image 8" data-full="C:\Users\singe\OneDrive\Desktop\Hashini new\image 4.jpeg" />
+ <img src="C:\Users\singe\OneDrive\Desktop\Hashini new\image 5.jpeg" alt="image 9" data-full="C:\Users\singe\OneDrive\Desktop\Hashini new\image 5.jpeg" />
+
+            <!-- Additional: image4..image9 can be added in same pattern -->
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div style="font-weight:700;color:var(--maroon)">ශ්‍රී සුදර්ශනාරාම විහාරය - පනාපිටිය</div>
+    <div style="font-size:13px;margin-top:6px">සකස් කළේ: පූජ්‍ය වතුරුවිල විජිත — Bs/24/25/881 — 2025.11.02</div>
+    <div style="margin-top:8px;font-size:13px;color:var(--muted)">© 2025 — සියලු හිමිකම් ඇවිරිණි</div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-hidden="true">
+    <img id="lb-img" src="" alt="Expanded photo" />
+  </div>
+
+  <script>
+    // Gallery lightbox
+    const imgs = document.querySelectorAll('#gallery img');
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lb-img');
+
+    imgs.forEach(img=>{
+      img.addEventListener('click', ()=> {
+        lbImg.src = img.dataset.full || img.src;
+        lightbox.style.display = 'flex';
+        lightbox.setAttribute('aria-hidden','false');
+      });
+    });
+
+    lightbox.addEventListener('click', ()=> {
+      lightbox.style.display = 'none';
+      lightbox.setAttribute('aria-hidden','true');
+      lbImg.src = '';
+    });
+
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape') lightbox.style.display = 'none';
+    });
+
+    // Smooth scroll for nav anchors
+    document.querySelectorAll('.nav-links a').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        e.preventDefault();
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+      });
+    });
+  </script>
+</body>
+</html>
